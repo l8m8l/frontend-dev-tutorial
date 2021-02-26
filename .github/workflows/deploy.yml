@@ -13,7 +13,9 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 15
-      - run: yarn global add @0y0/gitbook-cli
+      - run: |
+          yarn global add @0y0/gitbook-cli
+          echo "$(yarn global bin)" >> $GITHUB_PATH
       - run: gitbook build .
       - uses: peaceiris/actions-gh-pages@v3
         with:
